@@ -30,6 +30,8 @@ mordredDM = "```A Secret Message for {}```\nYou are **{}**.\n\nYou are on the si
 
 morganaDM = "```A Secret Message for {}```\nYou are **{}**.\n\nYou are on the side of **Evil** and must ensure three **failed** quests to secure victory for your team. You are aware of your fellow conspirators but you are unaware of independent forces of evil such as Oberon, should he be in the game.\n\nThe **Evil** players are:\n{}\n*`The list order has been randomized and player/role position has no significance on distribution`*\n\nIf you are selected to go on a quest, you may choose to fail it. **You appear as Merlin to Percival. Exert your influence correctly and evil will triumph, make a false move and Percival will immediately identify the true Merlin and condemn you.**\n\n"
 
+oberonDM = "```A Secret Message for {}```\nYou are **{}**.\n\nYou are on the side of **Evil** and must ensure three **failed** quests to secure victory for your team. You are not aware of your fellow conspirators and they are not aware of you.\n\nIf you are selected to go on a quest, you may choose to fail it.\n\nPlay to the best of your wits and try to discern the evil from the good.\n\n"
+
 percivalDM = "```A Secret Message for {}```\nYou are **{}**.\n\nYou are on the side of **Good** and must ensure three **successful** quests to secure victory for your team. **You are aware of Merlin, but Morgana will appear to be Merlin as well, should she be in the game.**\n\nMerlin is:\n{}\n*`The list order has been randomized and player/role position has no significance on distribution`*\n\nYou do not have the option to fail quests. Identify the true Merlin and keep him safe, you are Good's greatest asset.\n\n"
 
 teamStr = "\n```Team Building Phase Triggered```\n{}\n\n{} is the party leader. The leader can be in the team, but is not required to be so.\n\n**Quest: **`{}`\n**Number of Adventurers: **`{}`\n**Number of fails required: **`{}`\n\n**Board State: **{}\n\nDiscuss carefully, then propose who shall embark on the quest. To start a vote, the leader must type `!party` followed by {} names (Tag the names with '@')."
@@ -47,3 +49,5 @@ teamvoteStr = "\n```Team Voting Phase Triggered```\nPlease `!approve` or `!rejec
 privatevoteStr = "\n```Private Voting Phase Triggered```\nThe quest is now underway. Each adventurer will now attempt to complete their individual task.\n\n{}, please direct me either `!success` or `!fail`. Good-aligned players may only complete quests successfully."
 
 gameoverStr = "\n```Endgame Triggered```\n"
+
+subStr = "There are {} players in this game. \n```Would you like to replace {} with Oberon?```\n Message the chatroom '!Yes' or '!No'\n"
