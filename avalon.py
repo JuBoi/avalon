@@ -415,7 +415,8 @@ async def chooseOberon(client, message, original, playyerno):
 			return True;
 		return True;
 
-	await client.send_message(message.channel, subStr.format(playerno, original)
+	await client.send_message(message.channel, subStr.format(playerno, original))
+
 	pmtrigger = await client.wait_for_message(check=chooseOberonCheck)
 	if pmtrigger.content == "!Oberon":
 		return "Oberon"
@@ -428,6 +429,9 @@ async def loadrules(client,message,rules,roles,playerlist,playerno):
 		playersnamestring += "` "+x.name+" `|"
 	if playerno == 5:
 		sub = chooseOberon(client, message, "Agravain, Minion of Mordred", playerno)
+		while(sub != "Oberon" && sub != "Agravain, Minion of Mordred") {
+
+		}
 		rules.append(2) #quest 1
 		rules.append(3)
 		rules.append(2)
@@ -444,6 +448,9 @@ async def loadrules(client,message,rules,roles,playerlist,playerno):
 		await client.send_message(message.channel, startStr.format(playersnamestring,len(playerlist),"3","2",rolesStr))
 	elif playerno == 6:
 		sub = chooseOberon(client, message, "Agravain, Minion of Mordred", playerno)
+		while(sub != "Oberon" && sub != "Agravain, Minion of Mordred") {
+		
+		}
 		rules.append(2) #quest 1
 		rules.append(3)
 		rules.append(4)
@@ -461,6 +468,9 @@ async def loadrules(client,message,rules,roles,playerlist,playerno):
 		await client.send_message(message.channel, startStr.format(playersnamestring,len(playerlist),"4","2",rolesStr))
 	elif playerno == 7:
 		sub = chooseOberon(client, message, "Agravain, Minion of Mordred", playerno)
+		while(sub != "Oberon" && sub != "Agravain, Minion of Mordred") {
+		
+		}
 		rules.append(2) #quest 1
 		rules.append(3)
 		rules.append(3)
@@ -479,6 +489,9 @@ async def loadrules(client,message,rules,roles,playerlist,playerno):
 		await client.send_message(message.channel, startStr.format(playersnamestring,len(playerlist),"4","3",rolesStr))
 	elif playerno == 8:
 		sub = chooseOberon(client, message, "Agravain, Minion of Mordred", playerno)
+		while(sub != "Oberon" && sub != "Agravain, Minion of Mordred") {
+		
+		}
 		rules.append(3) #quest 1
 		rules.append(4)
 		rules.append(4)
@@ -498,6 +511,9 @@ async def loadrules(client,message,rules,roles,playerlist,playerno):
 		await client.send_message(message.channel, startStr.format(playersnamestring,len(playerlist),"5","3",rolesStr))
 	elif playerno == 9:
 		sub = chooseOberon(client, message, "The Assassin", playerno)
+		while(sub != "Oberon" && sub != "The Assassin") {
+		
+		}
 		rules.append(3) #quest 1
 		rules.append(4)
 		rules.append(4)
@@ -518,6 +534,9 @@ async def loadrules(client,message,rules,roles,playerlist,playerno):
 		await client.send_message(message.channel, startStr.format(playersnamestring,len(playerlist),"6","3",rolesStr))
 	elif playerno == 10:
 		sub = chooseOberon(client, message, "Agravain, Minion of Mordred", playerno)
+		while(sub != "Oberon" && sub != "Agravain, Minion of Mordred") {
+		
+		}
 		rules.append(3) #quest 1
 		rules.append(4)
 		rules.append(4)
