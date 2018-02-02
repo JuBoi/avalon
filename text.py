@@ -50,4 +50,4 @@ privatevoteStr = "\n```Private Voting Phase Triggered```\nThe quest is now under
 
 gameoverStr = "\n```Endgame Triggered```\n"
 
-subStr = "There are {} players in this game. \n```Would you like to replace {} with Oberon?```\n Message the chatroom '!Yes' or '!No'\n"
+subStr = "There are {} players in this game. \n```Would you like to replace {} with Oberon?```\n Message the chatroom '!Oberon' if you would like to do so\n"
