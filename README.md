@@ -7,6 +7,8 @@
 - pip - https://pip.pypa.io/en/stable/installing
 - discordpy - https://github.com/Rapptz/discord.py  
 `python3 -pip install -U discord.py`
+To start your instance of the bot:
+`python3 dreamlord.py`
 
 # Rules
 *Information in this section drawn from a combination of the game's manual, Wikipedia and theresistanceonline.com*
@@ -45,13 +47,14 @@ Avalon is a game of hidden loyalty. Players are either Loyal Servants of Arthur 
 - `!help` - Direct messages the user a link to this page.
 - `!stop` - End the currently running game.
 - `!join` - Used to join the game during the login phase.
+- `!oberon` - Used to replace an evil player role with Oberon before starting the game. Not advised with 9 players in the game.
+- `!start` - Used to start the game after players have joined during login phase.
 - `!party` - Used by the leader to propose a party during the team building phase.
 - `!approve/!reject` - Used to approve or reject a party during the team building phase.
 - `!success/!fail` - Used to succeed or fail a quest during the secret vote phase.
 - `!assassinate` - Used by the Assassin in the event of a Good victory to assassinate a member of the game. This command does not have any input verification and only allows you **one** try. Ensure that you @tag the correct person!
 
 # Coming Soon
-- Oberon.
 - Custom discord version of Lancelot.
 - Ability to select exactly which roles come into play.
 
