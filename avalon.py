@@ -109,13 +109,17 @@ async def night(client,message,playerlist,gamestate,rules,roles,canreject,cantre
 	shuffledlist = copy.deepcopy(playerlist)		#these are the things we need
 	shuffle(shuffledlist)
 	evillist = []
+	oberonlist = []
 	merlinlist = []
 	percivallist = []
 	for key in roles:					#populate the lists
 		roles[key] = shuffledlist.pop()
 	for key in roles:
-		if key == "Agravain, Minion of Mordred" or key == "The Assassin" or key == "Mordred" or key == "Morgana":
+		if key == "Agravain, Minion of Mordred" or key == "The Assassin" or key == "Mordred" or key == "Morgana" or key == "Oberon":
 			evillist.append(roles[key])	
+	for key in roles:
+		if key == "Agravain, Minion of Mordred" or key == "The Assassin" or key == "Mordred" or key == "Morgana":
+			oberonlist.append(roles[key])
 	for key in roles:
 		if key == "Agravain, Minion of Mordred" or key == "The Assassin" or key == "Morgana":
 			merlinlist.append(roles[key])			
@@ -124,6 +128,7 @@ async def night(client,message,playerlist,gamestate,rules,roles,canreject,cantre
 			percivallist.append(roles[key])
 	
 	shuffle(evillist)
+	shuffle(oberonlist);
 	shuffle(merlinlist)
 	shuffle(percivallist)
 	
@@ -140,19 +145,22 @@ async def night(client,message,playerlist,gamestate,rules,roles,canreject,cantre
 			await client.send_message(roles[key],loyalDM.format(roles[key].name,key))	
 		if key == "Agravain, Minion of Mordred":
 			canreject.append(roles[key])
-			await client.send_message(roles[key],minionDM.format(roles[key].name,key,toString(evillist)))
+			await client.send_message(roles[key],minionDM.format(roles[key].name,key,toString(oberonlist)))
 		if key == "Merlin":
 			cantreject.append(roles[key])
 			await client.send_message(roles[key],merlinDM.format(roles[key].name,key,toString(merlinlist)))
 		if key == "The Assassin":
 			canreject.append(roles[key])
-			await client.send_message(roles[key],assassinDM.format(roles[key].name,key,toString(evillist)))
+			await client.send_message(roles[key],assassinDM.format(roles[key].name,key,toString(oberonlist)))
 		if key == "Mordred":
 			canreject.append(roles[key])
 			await client.send_message(roles[key],mordredDM.format(roles[key].name,key,toString(evillist)))
 		if key == "Morgana":
 			canreject.append(roles[key])
-			await client.send_message(roles[key],morganaDM.format(roles[key].name,key,toString(evillist)))
+			await client.send_message(roles[key],morganaDM.format(roles[key].name,key,toString(oberonlist)))
+		if key == "Oberon":
+			canreject.append(roles[key])
+			await client.send_message(roles[key],oberonDM.format(roles[key].name,key));
 		if key == "Percival":
 			cantreject.append(roles[key])
 			await client.send_message(roles[key],percivalDM.format(roles[key].name,key,toString(percivallist)))
@@ -400,11 +408,26 @@ async def scoreboard(client,message):
 	await client.send_message(message.channel,scoreStr)
 	score.close()	
 	
+async def chooseOberon(client, message, original, playyerno):
+
+	def chooseOberonCheck(msg):
+		if msg.content == "!yes" or msg.content == "!no":
+			return True;
+		return False
+
+	await client.send_message(message.channel, subStr.format(playerno, original)
+	pmtrigger = await client.wait_for_message(check=chooseOberonCheck)
+	if pmtrigger.content == "!yes":
+		return "Oberon"
+	elif pmtrigger.content == "!no":
+		return original
+
 async def loadrules(client,message,rules,roles,playerlist,playerno):
 	playersnamestring = "|"
 	for x in playerlist:
 		playersnamestring += "` "+x.name+" `|"
 	if playerno == 5:
+		sub = chooseOberon(client, message, "Agravain, Minion of Mordred", playerno)
 		rules.append(2) #quest 1
 		rules.append(3)
 		rules.append(2)
@@ -414,12 +437,13 @@ async def loadrules(client,message,rules,roles,playerlist,playerno):
 		roles["The Assassin"] = ""
 		roles["Galahad, Loyal Servant of Arthur"] = ""
 		roles["Tristan, Loyal Servant of Arthur"] = ""
-		roles["Agravain, Minion of Mordred"] = ""
+		roles[sub] = ""
 		rolesStr = ""
 		for key in roles:
 			rolesStr += ":black_small_square: "+key+"\n"
 		await client.send_message(message.channel, startStr.format(playersnamestring,len(playerlist),"3","2",rolesStr))
 	elif playerno == 6:
+		sub = chooseOberon(client, message, "Agravain, Minion of Mordred", playerno)
 		rules.append(2) #quest 1
 		rules.append(3)
 		rules.append(4)
@@ -429,13 +453,14 @@ async def loadrules(client,message,rules,roles,playerlist,playerno):
 		roles["The Assassin"] = ""
 		roles["Galahad, Loyal Servant of Arthur"] = ""
 		roles["Tristan, Loyal Servant of Arthur"] = ""
-		roles["Agravain, Minion of Mordred"] = ""
+		roles[sub] = ""
 		roles["Guinevere, Loyal Servant of Arthur"] = ""
 		rolesStr = ""
 		for key in roles:
 			rolesStr += ":black_small_square: "+key+"\n"
 		await client.send_message(message.channel, startStr.format(playersnamestring,len(playerlist),"4","2",rolesStr))
 	elif playerno == 7:
+		sub = chooseOberon(client, message, "Agravain, Minion of Mordred", playerno)
 		rules.append(2) #quest 1
 		rules.append(3)
 		rules.append(3)
@@ -445,7 +470,7 @@ async def loadrules(client,message,rules,roles,playerlist,playerno):
 		roles["The Assassin"] = ""
 		roles["Galahad, Loyal Servant of Arthur"] = ""
 		roles["Tristan, Loyal Servant of Arthur"] = ""
-		roles["Agravain, Minion of Mordred"] = ""
+		roles[sub] = ""
 		roles["Percival"] = ""
 		roles["Morgana"] = ""
 		rolesStr = ""
@@ -453,6 +478,7 @@ async def loadrules(client,message,rules,roles,playerlist,playerno):
 			rolesStr += ":black_small_square: "+key+"\n"
 		await client.send_message(message.channel, startStr.format(playersnamestring,len(playerlist),"4","3",rolesStr))
 	elif playerno == 8:
+		sub = chooseOberon(client, message, "Agravain, Minion of Mordred", playerno)
 		rules.append(3) #quest 1
 		rules.append(4)
 		rules.append(4)
@@ -462,7 +488,7 @@ async def loadrules(client,message,rules,roles,playerlist,playerno):
 		roles["The Assassin"] = ""
 		roles["Galahad, Loyal Servant of Arthur"] = ""
 		roles["Tristan, Loyal Servant of Arthur"] = ""
-		roles["Agravain, Minion of Mordred"] = ""
+		roles[sub] = ""
 		roles["Percival"] = ""
 		roles["Morgana"] = ""
 		roles["Guinevere, Loyal Servant of Arthur"] = ""
@@ -471,13 +497,14 @@ async def loadrules(client,message,rules,roles,playerlist,playerno):
 			rolesStr += ":black_small_square: "+key+"\n"
 		await client.send_message(message.channel, startStr.format(playersnamestring,len(playerlist),"5","3",rolesStr))
 	elif playerno == 9:
+		sub = chooseOberon(client, message, "The Assassin", playerno)
 		rules.append(3) #quest 1
 		rules.append(4)
 		rules.append(4)
 		rules.append(5)
 		rules.append(5)
 		roles["Merlin"] = ""
-		roles["The Assassin"] = ""
+		roles[sub] = ""
 		roles["Galahad, Loyal Servant of Arthur"] = ""
 		roles["Tristan, Loyal Servant of Arthur"] = ""
 		roles["Mordred"] = ""
@@ -490,6 +517,7 @@ async def loadrules(client,message,rules,roles,playerlist,playerno):
 			rolesStr += ":black_small_square: "+key+"\n"
 		await client.send_message(message.channel, startStr.format(playersnamestring,len(playerlist),"6","3",rolesStr))
 	elif playerno == 10:
+		sub = chooseOberon(client, message, "Agravain, Minion of Mordred", playerno)
 		rules.append(3) #quest 1
 		rules.append(4)
 		rules.append(4)
@@ -504,7 +532,7 @@ async def loadrules(client,message,rules,roles,playerlist,playerno):
 		roles["Morgana"] = ""
 		roles["Guinevere, Loyal Servant of Arthur"] = ""
 		roles["Lamorak, Loyal Servant of Arthur"] = ""
-		roles["Agravain, Minion of Mordred"] = ""
+		roles[sub] = ""
 		rolesStr = ""
 		for key in roles:
 			rolesStr += ":black_small_square: "+key+"\n"
