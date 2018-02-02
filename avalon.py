@@ -411,15 +411,15 @@ async def scoreboard(client,message):
 async def chooseOberon(client, message, original, playyerno):
 
 	def chooseOberonCheck(msg):
-		if msg.content == "!yes" or msg.content == "!no":
+		if msg.content == "!Oberon":
 			return True;
-		return False
+		return True;
 
 	await client.send_message(message.channel, subStr.format(playerno, original)
 	pmtrigger = await client.wait_for_message(check=chooseOberonCheck)
-	if pmtrigger.content == "!yes":
+	if pmtrigger.content == "!Oberon":
 		return "Oberon"
-	elif pmtrigger.content == "!no":
+	else:
 		return original
 
 async def loadrules(client,message,rules,roles,playerlist,playerno):
